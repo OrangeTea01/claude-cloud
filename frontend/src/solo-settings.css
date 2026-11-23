@@ -1,0 +1,45 @@
+@import '@xterm/xterm/css/xterm.css';
+@import './login-browser.css';
+.solo-menu-shortcut { margin-left:auto; }
+.solo-menu-shortcut + .server-status { margin-left:12px; }
+.solo-management-menu { padding:13px; margin:14px 0; border:1px solid #dedbd2; border-radius:12px; background:#faf9f5; }
+.solo-management-menu summary { cursor:pointer; font-weight:600; padding:3px 0; }
+.solo-management-menu[open] { display:flex; flex-wrap:wrap; gap:10px; }
+.solo-management-menu[open] summary { width:100%; margin-bottom:12px; }
+.solo-management-menu .button { margin:8px 5px 0 0; }
+.solo-management-menu .text-button { margin-right:15px; min-height:40px; }
+.solo-settings-dialog { width:min(1000px,calc(100vw - 32px)); max-width:none; max-height:calc(100dvh - 32px); padding:28px; border:1px solid #dedbd2; border-radius:18px; background:#faf9f5; color:#171717; overflow:auto; }
+.solo-settings-dialog::backdrop { background:#17171770; backdrop-filter:blur(2px); }
+.solo-settings-header { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.solo-settings-header p { margin:0 0 5px; font-size:12px; }
+.solo-settings-header h1 { margin:0; font-size:26px; }
+.solo-settings-intro { font-size:14px; line-height:1.8; margin:14px 0 24px; }
+.solo-settings-dialog > details { margin:12px 0; padding:18px; border:1px solid #dedbd2; background:white; border-radius:12px; }
+.solo-settings-dialog > details > summary { font-size:17px; font-weight:600; cursor:pointer; }
+.solo-settings-dialog > details[open] > summary { margin-bottom:18px; }
+.solo-settings-dialog p { line-height:1.8; font-size:14px; }
+.solo-settings-dialog h2 { font-size:21px; margin:0 0 10px; }
+.solo-settings-dialog .policy-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.solo-settings-dialog .policy-eyebrow { display:none; }
+.solo-settings-dialog .policy-state { border:1px solid #dedbd2; background:#f2eee5; border-radius:6px; padding:5px 9px; font-size:12px; }
+.solo-settings-dialog .claude-account-actions,.solo-settings-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.solo-settings-dialog .primary-button,.solo-settings-dialog .secondary-button { border:1px solid #dedbd2; border-radius:8px; padding:10px 14px; min-height:44px; background:#f5f3ee; color:#171717; font:inherit; font-size:14px; cursor:pointer; }
+.solo-settings-dialog .primary-button { background:#e8b19b; border-color:#d89b84; }
+.solo-settings-dialog button:disabled { cursor:not-allowed; opacity:.65; }
+.solo-settings-dialog .admin-message:not([hidden]),.solo-settings-message:not([hidden]) { border:1px solid #dedbd2; border-radius:8px; padding:10px 12px; background:#f5f3ee; }
+.solo-settings-dialog .admin-message[data-kind="error"] { background:#f9e8e3; border-color:#dfb5a9; }
+.solo-settings-dialog .admin-claude-terminal-wrap { margin-top:20px; border:1px solid #dedbd2; border-radius:10px; overflow:hidden; }
+.solo-settings-dialog .admin-claude-terminal-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:9px; padding:12px; background:#f3f1eb; font-size:13px; }
+.solo-settings-dialog .admin-claude-terminal-toolbar > span { margin-right:auto; }
+.solo-settings-dialog .admin-claude-terminal { height:350px; padding:12px; background:#faf9f5; }
+.solo-settings-dialog .admin-claude-terminal-note { padding:12px; margin:0; border-top:1px solid #dedbd2; }
+.solo-settings-dialog .usage-auth-association { border:1px solid #dedbd2; border-radius:10px; padding:16px; margin-top:20px; }
+.solo-settings-dialog .usage-auth-association label { display:flex; gap:9px; margin:12px 0; align-items:flex-start; }
+.solo-settings-dialog [data-password-form] { max-width:520px; }
+.solo-settings-dialog [data-password-form] label { display:block; margin:14px 0 7px; font-size:14px; }
+.solo-settings-dialog [data-password-form] button { margin-top:20px; }
+.solo-model-option { display:flex; gap:9px; align-items:center; }
+.solo-settings-dialog [hidden] { display:none!important; }
+.solo-settings-dialog .policy-description { margin:10px 0; }
+.server-warning .button { margin-left:8px; }
+@media(max-width:700px) { .solo-settings-dialog { width:100%; max-height:100dvh; height:100dvh; margin:0; border:0; border-radius:0; padding:18px; }.solo-settings-dialog > details { padding:15px; }.solo-settings-dialog .admin-claude-terminal { height:320px; padding:8px; }.solo-settings-header h1 { font-size:23px; }.solo-menu-shortcut + .server-status { display:none; }.server-warning .button { display:block; margin:10px 0 0; } }

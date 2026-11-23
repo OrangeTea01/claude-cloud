@@ -1,0 +1,30 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>注册充值浏览器 · 本地布局检查</title></head><body><main id="fixture" style="max-width:960px;margin:64px auto;padding:24px"><p>本地布局预览 · 不连接 Claude，不进行注册或付款</p><h1>Claude 账号服务</h1><p>通过账号菜单打开独立的服务器浏览器。</p><button class="button secondary" id="account">个人工作台 · preview</button><button class="button primary" id="open">预览注册浏览器</button><button class="button secondary" id="billing">预览订阅管理</button><p id="preview-toast" role="status"></p></main><script type="module">
+import './src/style.css';
+import './src/quota.css';
+import './src/account-browser.css';
+import { AccountBrowser } from './src/account-browser.js';
+import { AccountUsageMenu } from './src/account-usage.js';
+const parameters=new URLSearchParams(location.search);
+if(parameters.has('phone')) {
+  document.body.innerHTML='<main style="padding:20px;text-align:center"><p>手机布局检查 · 390 × 844</p><iframe title="手机布局预览" src="/account-browser.preview.html?embedded=1" style="width:390px;height:844px;border:1px solid #ddd;border-radius:15px;background:#faf9f5"></iframe></main>';
+} else {
+  let lease=null;
+  const api=async(path,options={})=>{
+    if(path==='/api/account/usage') return {quota:{fiveHour:{limit:100,used:0,remaining:100},weekly:{limit:100,used:0,remaining:100}},official:{fiveHour:{status:'unknown'},weekly:{status:'unknown'}},activeTasks:[],idleMinutes:30};
+    if(path.endsWith('/stop')) { lease=null; return {ok:true}; }
+    if(options.method==='POST') { lease={active:true,browserId:'a'.repeat(32),purpose:options.body.purpose,expiresAt:lease?.expiresAt||new Date(Date.now()+(parameters.has('warning')?120:1800)*1000).toISOString()};return {...lease}; }
+    return lease?{...lease}:{active:false};
+  };
+  class PreviewSocket extends EventTarget { constructor(){super();setTimeout(()=>this.onopen?.(new Event('open')),10)}send(){}close(){} }
+  class PreviewDisplay extends EventTarget {
+    constructor(screen){super();this.screen=screen;screen.innerHTML='<div style="height:100%;min-width:260px;display:flex;flex-direction:column;background:white;color:#171717"><div style="padding:14px;background:#eee;border-bottom:1px solid #ddd;font-size:14px">远程浏览器地址栏 · 仅演示</div><div style="display:grid;place-content:center;flex:1;text-align:center;padding:30px"><h3 style="font-size:24px">服务器浏览器画面</h3><p style="line-height:1.8">部署后，这里显示官方注册或付款页面。<br>当前只是本地布局演示。</p></div></div>';setTimeout(()=>this.dispatchEvent(new Event('connect')),10)}
+    disconnect(){}focus(){}sendKey(){}
+  }
+  const browser=new AccountBrowser({api,getContext:()=>({authenticated:true,key:'preview-user',csrf:'preview-only'}),toast:(message)=>document.getElementById('preview-toast').textContent=message,createSocket:()=>new PreviewSocket(),loadRFB:async()=>PreviewDisplay});
+  const menu=new AccountUsageMenu({api,getUser:()=>({id:'preview',username:'preview'}),audio:{enabled:false,status:'未开启',setEnabled(){}},openBrowser:(purpose)=>browser.show(purpose)});
+  menu.mount(document.getElementById('account'));
+  document.getElementById('open').onclick=()=>browser.show('register');
+  document.getElementById('billing').onclick=()=>browser.show('billing');
+  if(parameters.has('embedded')||parameters.has('open')||parameters.has('warning'))browser.show('register');
+}
+</script></body></html>

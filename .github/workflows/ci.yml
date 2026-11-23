@@ -1,0 +1,100 @@
+name: Validate Claude Cloud Open Source
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: pip install -r requirements-dev.txt
+      - run: python -m unittest discover -s tests -v
+      - name: Install desktop deployment runtime dependency
+        run: pip install paramiko==4.0.0
+      - name: Test deployment engine without a server
+        run: python -m unittest discover -s installer/tests -v
+      - name: Validate public IP HTTPS configuration without issuing certificates
+        run: docker run --rm -e DOMAIN=203.0.113.10 -e PUBLIC_ORIGIN=https://203.0.113.10 -v "$PWD/deploy/Caddyfile:/etc/caddy/Caddyfile:ro" caddy:2.11.9-alpine caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+      - run: npm ci --no-audit --no-fund
+        working-directory: frontend
+      - run: npm run check
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+
+  docker-smoke:
+    # Downloads the official Claude binary, but never authenticates or calls AI.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        app-mode: [multiuser, solo]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Docker isolation support
+        run: |
+          docker version
+          test "$(docker version --format '{{.Server.Version}}' | cut -d. -f1)" -ge 28
+      - name: Create ephemeral test configuration
+        env:
+          SMOKE_APP_MODE: ${{ matrix.app-mode }}
+        run: |
+          python - <<'PY'
+          import os, pathlib, secrets
+          from scripts.configure import password_hash
+          password = secrets.token_urlsafe(32)
+          admin_password = secrets.token_urlsafe(32)
+          pathlib.Path('.smoke-password').write_text(password)
+          pathlib.Path('.smoke-password').chmod(0o600)
+          pathlib.Path('.smoke-admin-password').write_text(admin_password)
+          pathlib.Path('.smoke-admin-password').chmod(0o600)
+          mode = os.environ['SMOKE_APP_MODE']
+          seed = password if mode == 'solo' else secrets.token_urlsafe(48)
+          management = '' if mode == 'solo' else password_hash(admin_password)
+          pathlib.Path('.env').write_text("APP_MODE=" + mode + "\nADMIN_PASSWORD_HASH='" + password_hash(seed) + "'\nMANAGEMENT_PASSWORD_HASH='" + management + "'\nPUBLIC_ORIGIN=http://localhost:8000\nCOOKIE_SECURE=false\n")
+          pathlib.Path('.env').chmod(0o600)
+          PY
+      - run: docker compose --profile tools build worker login-browser
+      - name: Verify real browser sandbox without internet or account login
+        run: python deploy/login_browser/smoke_runtime.py
+      - run: docker compose up -d --build --wait
+      - name: Verify fresh website has no user and create the test account as administrator
+        if: matrix.app-mode == 'multiuser'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from scripts.smoke_test import Client
+          client = Client('http://localhost:8000')
+          client.csrf = client.request('POST', '/api/admin/login', {'password': Path('.smoke-admin-password').read_text()})['csrfToken']
+          assert client.request('GET', '/api/admin/users')['users'] == [], 'New installations must not create a default user'
+          password = Path('.smoke-password').read_text()
+          client.request('POST', '/api/admin/users', {'username': 'smoke-user', 'password': password, 'confirmPassword': password}, expected=201)
+          client.request('POST', '/api/admin/logout')
+          PY
+      - name: Exercise real containers and account access boundaries
+        run: python scripts/smoke_test.py --origin http://localhost:8000 --username smoke-user --password-file .smoke-password
+      - name: Show service logs on failure
+        if: failure()
+        run: docker compose logs --tail=80 web egress
+      - name: Tear down test services
+        if: always()
+        run: docker compose down -v

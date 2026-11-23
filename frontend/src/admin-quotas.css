@@ -1,0 +1,44 @@
+.admin-quotas-card { grid-column: 1 / -1; }
+.admin-quotas-card .card-description { margin-bottom: 18px; }
+.admin-official-quotas { padding: 17px 20px; background: #fff; border: 1px solid #dedbd2; border-radius: 10px; }
+.admin-official-quotas .official-usage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.admin-official-quotas h3, .admin-official-quotas .quota-footnote, .admin-official-quotas .quota-status, .admin-official-quotas .quota-retry { grid-column: 1 / -1; }
+.admin-quotas-card h3 { font-size: 14px; margin: 0 0 11px; font-weight: 550; }
+.admin-quota-summary { margin: 22px 0 18px; font-size: 12px; line-height: 1.9; }
+.admin-quota-summary p { margin: 5px 0; }
+.admin-quota-users { display: grid; gap: 12px; }
+.admin-quota-user { background: #faf9f5; padding: 17px 20px; border: 1px solid #dedbd2; border-radius: 10px; }
+.admin-quota-user-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; overflow-wrap: anywhere; }
+.admin-quota-user-heading > span { font-size: 11px; }
+.admin-quota-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) 130px; gap: 14px; align-items: start; }
+.admin-quota-fields > button { margin-top: 26px; }
+.admin-quota-fields label { font-size: 11px; margin: 0 0 9px; }
+.admin-quota-fields p { font-size: 11px; margin: 7px 0 0; line-height: 1.7; }
+.admin-quota-fields input { font-variant-numeric: tabular-nums; }
+.admin-quota-distribution { margin-top: 22px; border-top: 1px solid #dedbd2; padding-top: 22px; }
+.admin-quota-distribution > p { font-size: 12px; line-height: 1.8; margin: 0 0 17px; }
+.admin-quota-confirm { width: min(750px, calc(100vw - 30px)); }
+.admin-quota-preview-scroll { overflow: auto; max-height: 50vh; }
+.admin-quota-confirm .admin-workspace-table small { display: block; margin-top: 5px; font-size: 11px; line-height: 1.6; }
+.admin-quota-confirm .primary-button { width: auto; }
+.admin-quota-automatic { margin-top: 22px; padding: 19px 20px; background: #faf9f5; border: 1px solid #dedbd2; border-radius: 10px; }
+.admin-quota-automatic > p, .admin-quota-rules p, .admin-quota-blocked { font-size: 12px; line-height: 1.8; margin: 8px 0; }
+.admin-quota-member-list { display: flex; gap: 9px; flex-wrap: wrap; margin: 16px 0; }
+.admin-card .admin-quota-member-list label { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; padding: 10px 12px; margin: 0; border: 1px solid #dedbd2; border-radius: 7px; background: #fff; cursor: pointer; }
+.admin-quota-member-list label > span { overflow-wrap: anywhere; }
+.admin-card .admin-quota-member-list input { display: inline-block; appearance: auto; flex: none; width: 16px; height: 16px; padding: 0; margin: 0; accent-color: #a76e56; }
+.admin-quota-selection-summary { font-variant-numeric: tabular-nums; }
+.admin-quota-rules { margin: 14px 0; font-size: 12px; line-height: 1.8; }
+.admin-quota-rules summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.admin-quota-mode-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.admin-quota-mode-actions > button { flex: 1; min-width: 190px; }
+.admin-quota-percent-windows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.admin-quota-blocked { padding: 8px 10px; border: 1px solid #dedbd2; border-radius: 7px; }
+@media(max-width: 640px) {
+  .admin-official-quotas, .admin-quota-user { padding: 14px; }
+  .admin-official-quotas .official-usage { grid-template-columns: minmax(0, 1fr); }
+  .admin-quota-fields { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+  .admin-quota-fields > button { margin-top: 0; }
+  .admin-quota-automatic { padding: 14px; }
+  .admin-quota-percent-windows { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}

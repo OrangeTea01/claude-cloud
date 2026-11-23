@@ -1,0 +1,7 @@
+.workspace-app .workspace-heading { flex-wrap: wrap; }
+.workspace-app .archive-download-button { border-color: #dedbd2; }
+.workspace-app .archive-download-button[aria-busy="true"] { cursor: progress; }
+.workspace-app .archive-hint { flex: none; margin: -2px 0 9px; color: #171717; font-size: 11px; line-height: 1.5; }
+@media (max-width: 700px) {
+  .workspace-app .archive-hint { font-size: 10px; margin: 0 0 7px; }
+}

@@ -1,0 +1,28 @@
+.workspace-locked { width: min(100% - 40px, 430px); margin: auto; padding: 34px 0; color: #171717; }
+.workspace-lock-mark { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #dedbd2; border-radius: 15px; color: #171717; font-size: 33px; background: #f0eee7; margin-bottom: 24px; }
+.workspace-locked h1 { overflow-wrap: anywhere; font-size: 16px; color: #171717; font-weight: 500; margin: 0 0 9px; }
+.workspace-locked h2 { font-size: 27px; color: #171717; margin: 0 0 15px; }
+.workspace-locked > p { color: #171717; font-size: 14px; line-height: 1.9; margin-bottom: 25px; }
+.workspace-locked form { width: 100%; }
+.workspace-locked form .button { width: 100%; }
+.workspace-password-modal .field-label { display: block; margin-top: 14px; }
+.workspace-password-modal .text-input { width: 100%; }
+.workspace-locked button:disabled, .workspace-password-modal button:disabled { opacity: 1; color: #171717; background: #f0eee7; cursor: not-allowed; }
+.login-card #username { margin-bottom: 18px; }
+.workspace-app .workspace-actions .workspace-password-button { padding: 5px 8px; }
+.workspace-app .workspace-actions { flex-wrap: wrap; }
+.workspace-app #dashboard-content:has(.workspace-locked) { display: flex; overflow-y: auto; }
+@media (max-width: 700px) {
+  .workspace-locked { width: min(100% - 32px, 430px); }
+  .workspace-app .workspace-actions .workspace-password-button { font-size: 11px; }
+}
+/* Personal workspaces choose a fixed conversation mode at creation. */
+.workspace-mode-options { border: 0; padding: 0; margin: 22px 0 16px; display: grid; gap: 10px; }
+.workspace-mode-options legend { font-size: 13px; margin-bottom: 10px; }
+.workspace-mode-options label { display: flex; align-items: start; gap: 12px; padding: 14px; border: 1px solid #dedbd2; border-radius: 10px; cursor: pointer; }
+.workspace-mode-options label:has(input:checked) { background: #f7eee7; border-color: #bd806b; }
+.workspace-mode-options input { flex: none; width: 16px; height: 16px; margin-top: 3px; accent-color: #171717; }
+.workspace-mode-options span { display: grid; gap: 6px; }
+.workspace-mode-options strong { font-size: 14px; }
+.workspace-mode-options small { font-size: 12px; line-height: 1.7; }
+.workspace-create-modal .modal-description { font-size: 12px; margin-bottom: 0; }

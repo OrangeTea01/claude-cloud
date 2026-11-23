@@ -1,0 +1,52 @@
+.account-browser-dialog { box-sizing:border-box; width:min(1400px,calc(100vw - 32px)); max-width:none; max-height:calc(100dvh - 32px); padding:24px; overflow:auto; border:1px solid #dedbd2; border-radius:18px; color:#171717; background:#faf9f5; box-shadow:0 24px 80px #17171726; font-size:16px; }
+.account-browser-dialog::backdrop { background:#17171780; backdrop-filter:blur(3px); }
+.account-browser-header { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
+.account-browser-header h2 { font-size:24px; line-height:1.3; margin:7px 0 0; color:#171717; }
+.account-browser-eyebrow { font-size:12px; letter-spacing:.08em; color:#171717; }
+ .account-browser-dialog button, .account-browser-dialog input { font-family:inherit; }
+.account-browser-dialog .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 13px; border:1px solid #dedbd2; border-radius:9px; background:#fff; color:#171717; font:inherit; cursor:pointer; }
+.account-browser-dialog .text-button { padding:5px 0; border:0; background:transparent; color:#171717; font:inherit; cursor:pointer; }
+.account-browser-dialog .text-input { box-sizing:border-box; padding:10px 12px; border:1px solid #dedbd2; border-radius:9px; min-height:44px; font:inherit; }
+.account-browser-dialog button:disabled { cursor:not-allowed; opacity:.6; }
+.account-browser-dialog .text-input:focus-visible { outline:2px solid #7d4d38; outline-offset:2px; }
+.account-browser-header .button { flex-shrink:0; background:#fff; border:1px solid #dedbd2; min-height:42px; font-size:14px; }
+.account-browser-intro { font-size:15px; line-height:1.7; color:#171717; margin:16px 0; max-width:96ch; }
+.account-browser-tabs { display:flex; gap:6px; padding:5px; border:1px solid #dedbd2; border-radius:12px; background:#f0eee7; width:fit-content; max-width:100%; }
+.account-browser-tabs button { border:1px solid transparent; border-radius:8px; color:#171717; padding:9px 15px; min-height:42px; background:transparent; font:inherit; font-size:15px; cursor:pointer; }
+.account-browser-tabs button[aria-pressed="true"] { background:#fff; border-color:#dedbd2; box-shadow:0 1px 3px #1717170a; }
+.account-browser-tabs button:disabled { opacity:1; cursor:progress; background:#f0eee7; }
+.account-browser-toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0; }
+.account-browser-toolbar p { margin:0; font-size:14px; line-height:1.6; color:#171717; }
+.account-browser-toolbar .is-error { font-weight:600; }
+.account-browser-display-actions { display:flex; align-items:center; justify-content:flex-end; gap:16px; flex-shrink:0; }
+.account-browser-display-actions .text-button { font-size:14px; min-height:38px; }
+.account-browser-time { font-size:14px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.account-browser-time strong { margin-left:5px; font-size:17px; }
+.account-browser-warning { border:1px solid #d7a68d; border-radius:10px; padding:11px 14px; background:#f4e5db; font-size:14px; line-height:1.6; margin:0 0 12px; }
+.account-browser-screen { height:min(65dvh,820px); min-height:360px; overflow:auto; border:1px solid #dedbd2; border-radius:10px; background:#f0eee7; overscroll-behavior:contain; }
+.account-browser-screen canvas[style*="cursor: none"] { cursor:default!important; }
+.account-browser-input { padding:14px 0 0; color:#171717; }
+.account-browser-input summary { font-size:15px; line-height:1.7; cursor:pointer; }
+.account-browser-input p { font-size:14px; line-height:1.6; margin:9px 0; }
+.account-browser-entry { display:flex; align-items:center; gap:10px; }
+.account-browser-entry .text-input { flex:1; min-width:0; color:#171717; background:#fff; border-color:#dedbd2; font-size:16px; }
+.account-browser-entry .button { flex-shrink:0; min-height:42px; font-size:14px; background:#fff; border-color:#dedbd2; }
+.account-browser-keys { display:flex; flex-wrap:wrap; gap:7px 18px; padding-top:8px; }
+.account-browser-keys .text-button { font-size:14px; min-height:38px; }
+.account-browser-footnote { margin:16px 0 0; font-size:14px; line-height:1.7; color:#171717; }
+.account-browser-dialog [hidden] { display:none!important; }
+.account-browser-dialog button:focus-visible,.account-browser-dialog summary:focus-visible { outline:2px solid #7d4d38; outline-offset:3px; }
+@media (max-width:700px) {
+  .account-browser-dialog { width:100%; max-height:100dvh; height:100dvh; margin:0; padding:16px; border:0; border-radius:0; }
+  .account-browser-header { gap:10px; }
+  .account-browser-header h2 { font-size:20px; }
+  .account-browser-header .button { max-width:100px; padding:8px 10px; line-height:1.5; }
+  .account-browser-intro { font-size:14px; margin:14px 0; }
+  .account-browser-tabs { width:100%; }
+  .account-browser-tabs button { flex:1; padding:9px 6px; font-size:14px; }
+  .account-browser-toolbar { align-items:flex-start; flex-direction:column; gap:7px; }
+  .account-browser-display-actions { width:100%; justify-content:flex-start; gap:14px; flex-wrap:wrap; }
+  .account-browser-screen { height:54dvh; min-height:300px; }
+  .account-browser-entry { align-items:stretch; }
+  .account-browser-footnote { font-size:13px; }
+}

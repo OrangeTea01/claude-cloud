@@ -1,0 +1,57 @@
+.server-login-dialog{width:min(1320px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 28px);padding:22px;border:1px solid #dedbd2;border-radius:14px;background:#faf9f5;color:#171717;box-shadow:0 24px 70px #17171726;overflow:auto}
+.server-login-dialog::backdrop{background:#17171766;backdrop-filter:blur(4px)}
+.server-login-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.server-login-header h2{font-size:20px;margin:7px 0 0}
+.server-login-header .eyebrow{font-size:9px}
+.server-login-note{font-size:12px;color:#171717;line-height:1.8;margin:15px 0}
+.server-login-start{background:#f0eee7;padding:15px;border-radius:8px}
+.server-login-start>div,.server-login-code>div,.server-login-input>div{display:flex;align-items:center;gap:10px}
+.server-login-start input,.server-login-code input,.server-login-input input{min-width:0;flex:1}
+.server-login-start small,.server-login-code small{display:block;font-size:11px;color:#171717;margin-top:9px;line-height:1.6}
+.server-login-toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 0}
+.server-login-toolbar>div{display:flex;gap:15px;flex-shrink:0}
+.server-login-status{font-size:12px;line-height:1.6;color:#171717}
+.server-login-status.error{color:#171717}
+.server-login-screen{height:min(64dvh,760px);min-height:300px;overflow:auto;border-radius:7px;border:1px solid #dedbd2;background:#f0eee7;overscroll-behavior:contain}
+.server-login-controls{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-top:16px}
+.server-login-controls p{font-size:11px;line-height:1.7;color:#171717;margin:6px 0 10px}
+.server-login-input summary{font-size:12px;cursor:pointer;padding:5px 0;color:#171717}
+.server-login-code .field-label{font-size:12px}
+.server-login-keys{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.server-login-controls input{font-size:14px}
+.raw-terminal-login{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 15px;border-bottom:1px solid #dedbd2;background:#f0eee7;color:#171717;font-size:10px;line-height:1.6}
+.raw-terminal-login .button{white-space:nowrap;flex-shrink:0;font-size:10px}
+.raw-terminal-login span{max-width:72ch}
+@media(max-width:700px){.server-login-dialog{width:100%;max-height:100dvh;min-height:100dvh;margin:0;padding:14px;border-radius:0;border:0}
+.server-login-header{align-items:flex-start;gap:10px}
+.server-login-header h2{font-size:17px}
+.server-login-header .button{font-size:10px;min-height:34px;padding:5px 8px}
+.server-login-note{font-size:11px}
+.server-login-start>div{flex-direction:column;align-items:stretch}
+.server-login-start input{font-size:16px}
+.server-login-toolbar{align-items:flex-start;gap:8px}
+.server-login-toolbar>div{gap:10px;flex-direction:column;align-items:flex-end}
+.server-login-toolbar .text-button{font-size:11px}
+.server-login-screen{height:54dvh;min-height:260px}
+.server-login-controls{grid-template-columns:1fr;gap:14px}
+.server-login-controls input{font-size:16px}
+.server-login-controls .button{font-size:11px;padding:7px 9px}
+.raw-terminal-login{padding:9px 10px;align-items:flex-start}
+.raw-terminal-login span{font-size:9px}
+.raw-terminal-login .button{font-size:9px;padding:6px 8px}}
+
+.raw-terminal-login-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0;max-width:55%}
+
+/* noVNC's touch fallback cursor lives under a modal dialog's top layer. Keep a
+   native pointer when noVNC hides it; preserve normal remote cursor images. */
+.server-login-screen canvas[style*="cursor: none"]{cursor:default!important}
+
+.server-login-header .eyebrow, .server-login-code .field-label { color: #171717; }
+.server-login-start input, .server-login-code input, .server-login-input input { background: #fff; border-color: #dedbd2; color: #171717; }
+.server-login-dialog input::placeholder { color: #171717; opacity: 1; }
+.server-login-dialog .button { color: #171717; background: #fff; border-color: #dedbd2; }
+.server-login-dialog .button.primary { color: #171717; background: #e8b19b; border-color: #e8b19b; }
+.server-login-dialog .text-button { color: #171717; }
+.server-login-dialog button:disabled, .server-login-dialog input:disabled { opacity: 1; color: #171717; -webkit-text-fill-color: #171717; background: #f0eee7; cursor: not-allowed; }
+.raw-terminal-login .button { color: #171717; background: #e8b19b; border-color: #e8b19b; }
+.raw-terminal-login .button:disabled { opacity: 1; color: #171717; background: #f0eee7; border-color: #dedbd2; cursor: not-allowed; }

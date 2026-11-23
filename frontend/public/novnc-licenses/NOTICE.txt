@@ -1,0 +1,8 @@
+noVNC 1.7.0 - Copyright the noVNC authors (see AUTHORS).
+Used without source modifications for the server-hosted login browser display.
+Source: https://github.com/novnc/noVNC/tree/v1.7.0
+NPM: https://www.npmjs.com/package/@novnc/novnc/v/1.7.0
+The source is available under the Mozilla Public License 2.0; additional bundled
+components carry BSD and other notices. See the LICENSE files in this directory
+and the upstream source files for their individual copyright notices.
+Pako: Copyright (C) 2014-2016 Vitaly Puzrin; see LICENSE.pako-MIT.

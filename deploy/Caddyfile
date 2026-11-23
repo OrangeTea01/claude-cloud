@@ -1,0 +1,20 @@
+{
+	# Browsers normally omit SNI for IP URLs. In Docker, select the public
+	# certificate instead of the container's private interface address.
+	default_sni {$DOMAIN}
+}
+
+{$PUBLIC_ORIGIN} {
+	tls {
+		issuer acme {
+			dir https://acme-v02.api.letsencrypt.org/directory
+			# Required for public IP certificates; also valid for DNS names.
+			profile shortlived
+		}
+	}
+	encode zstd gzip
+	reverse_proxy web:8000
+	header {
+		Strict-Transport-Security "max-age=31536000"
+	}
+}

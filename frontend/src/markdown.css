@@ -1,0 +1,67 @@
+.chat-markdown,
+.chat-message-text.chat-markdown {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+.chat-markdown > :first-child { margin-top: 0; }
+.chat-markdown > :last-child { margin-bottom: 0; }
+.chat-markdown p { margin: 0 0 .8em; }
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3,
+.chat-markdown h4,
+.chat-markdown h5,
+.chat-markdown h6 { color: #171717; font-weight: 650; line-height: 1.5; margin: 1.25em 0 .55em; }
+.chat-markdown h1 { font-size: 1.55em; }
+.chat-markdown h2 { font-size: 1.35em; }
+.chat-markdown h3 { font-size: 1.2em; }
+.chat-markdown h4,
+.chat-markdown h5,
+.chat-markdown h6 { font-size: 1.05em; }
+.chat-markdown strong { font-weight: 650; color: #171717; }
+.chat-markdown ul,
+.chat-markdown ol { margin: .5em 0 1em; padding-left: 1.8em; }
+.chat-markdown ul { list-style-type: disc; }
+.chat-markdown ol { list-style-type: decimal; }
+.chat-markdown li { margin: .3em 0; padding-left: .15em; }
+.chat-markdown li > p { margin-bottom: .4em; }
+.chat-markdown li > ul,
+.chat-markdown li > ol { margin: .2em 0 .5em; }
+.chat-markdown blockquote { margin: .8em 0; padding: .55em 1em; border-left: 3px solid #dedbd2; background: #f0eee7; color: #171717; }
+.chat-markdown blockquote > :last-child { margin-bottom: 0; }
+.chat-markdown hr { border: 0; border-top: 1px solid #dedbd2; margin: 1.4em 0; }
+.chat-markdown a { color: #171717; text-decoration: underline; text-underline-offset: 3px; }
+.chat-markdown a:hover { color: #171717; }
+.chat-markdown a:focus-visible,
+.chat-markdown .markdown-table-wrap:focus-visible { outline: 2px solid #171717; outline-offset: 3px; }
+.chat-markdown code { font-family: Consolas, "SFMono-Regular", "Microsoft YaHei", monospace; font-size: .92em; }
+.chat-markdown :not(pre) > code { padding: .1em .35em; border-radius: 4px; background: #f0eee7; color: #171717; }
+.chat-markdown .markdown-code-block { margin: .9em 0; max-width: 100%; border: 1px solid #dedbd2; border-radius: 12px; overflow: hidden; background: #faf9f5; }
+.chat-markdown .markdown-code-label { padding: 5px 12px; font: 10px/1.6 Consolas, "SFMono-Regular", monospace; color: #171717; background: #f0eee7; border-bottom: 1px solid #dedbd2; overflow-wrap: anywhere; }
+.chat-markdown pre,
+.message-original .chat-markdown pre { display: block; margin: 0; padding: 12px 14px; max-width: 100%; overflow-x: auto; white-space: pre; overflow-wrap: normal; border: 0; border-radius: 0; background: transparent; color: #171717; font: 12px/1.75 Consolas, "SFMono-Regular", "Microsoft YaHei", monospace; tab-size: 2; scrollbar-width: thin; }
+.chat-markdown pre > code { display: block; padding: 0; border: 0; background: none; color: inherit; font-size: inherit; white-space: inherit; }
+.chat-markdown .markdown-table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: .9em 0; border: 1px solid #dedbd2; border-radius: 6px; scrollbar-width: thin; }
+.chat-markdown table { width: 100%; margin: 0; border-collapse: collapse; font-size: .95em; }
+.chat-markdown th,
+.chat-markdown td { min-width: 90px; padding: 8px 11px; border-right: 1px solid #dedbd2; border-bottom: 1px solid #dedbd2; vertical-align: top; text-align: left; }
+.chat-markdown th { background: #f0eee7; color: #171717; font-weight: 600; }
+.chat-markdown th[align="center"],
+.chat-markdown td[align="center"] { text-align: center; }
+.chat-markdown th[align="right"],
+.chat-markdown td[align="right"] { text-align: right; }
+.chat-markdown tr > :last-child { border-right: 0; }
+.chat-markdown tbody tr:last-child > * { border-bottom: 0; }
+.chat-markdown tbody tr:nth-child(even) { background: #faf9f5; }
+.chat-markdown .markdown-image { color: #171717; font-size: .92em; }
+.chat-markdown .markdown-checkbox { color: #171717; }
+.message-original .chat-markdown { margin-top: 8px; padding: 12px; border: 1px solid #dedbd2; border-radius: 5px; background: #f0eee7; color: #171717; font-size: 11px; }
+@media (max-width: 700px) {
+  .chat-markdown pre,
+  .message-original .chat-markdown pre { padding: 10px; font-size: 11px; }
+  .chat-markdown th,
+  .chat-markdown td { padding: 6px 8px; }
+}

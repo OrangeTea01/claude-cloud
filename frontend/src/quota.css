@@ -1,0 +1,26 @@
+.account-usage-menu { position: fixed; z-index: 80; left: 16px; bottom: 82px; width: min(410px, calc(100vw - 32px)); max-height: min(760px, calc(100dvh - 110px)); overflow: auto; overscroll-behavior: contain; background: #fff; color: #171717; border: 1px solid #dedbd2; border-radius: 16px; box-shadow: 0 12px 36px #17171720; padding: 18px; }
+.account-usage-menu header { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.account-usage-menu header strong { font-size: 16px; overflow-wrap: anywhere; }
+.account-usage-menu h3 { margin: 17px 0 10px; font-size: 14px; }
+.account-usage-menu p { font-size: 12px; line-height: 1.7; margin: 5px 0; color: #171717; }
+.quota-window { padding: 11px 12px; border: 1px solid #dedbd2; border-radius: 10px; background: #faf9f5; margin: 8px 0; }
+.quota-window > strong { font-size: 13px; }
+.quota-window dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 9px 0; }
+.quota-window dt { font-size: 11px; margin-bottom: 3px; }
+.quota-window dd { font-size: 12px; margin: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.quota-window p, .official-window p, .quota-footnote { font-size: 11px; line-height: 1.7; margin: 5px 0; }
+.official-window { margin: 11px 0; }
+.official-window-freshness[data-stale="true"] { padding: 3px 7px; border-left: 2px solid #d4b29c; background: #faf9f5; }
+.official-window > div { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; }
+.official-window progress { appearance: none; display: block; width: 100%; height: 7px; margin: 7px 0; border: 0; border-radius: 8px; overflow: hidden; background: #f0eee7; }
+.official-window progress::-webkit-progress-bar { background: #f0eee7; }
+.official-window progress::-webkit-progress-value { background: #c78f78; border-radius: 8px; }
+.official-window progress::-moz-progress-bar { background: #c78f78; border-radius: 8px; }
+.quota-unknown { padding: 6px 9px; border: 1px dashed #dedbd2; border-radius: 7px; background: #faf9f5; }
+.quota-status, .account-usage-error { border: 1px solid #dfb5a9; padding: 8px 10px; border-radius: 8px; background: #f9e8e3; }
+.account-menu-actions { border-top: 1px solid #dedbd2; margin-top: 14px; padding-top: 12px; display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+.account-menu-actions #account-sound-state { grid-column: 1 / -1; font-size: 11px; }
+.account-sound-toggle { display: flex; align-items: center; gap: 7px; font-size: 12px; cursor: pointer; }
+.account-sound-toggle input { accent-color: #a76e56; }
+.account-active-tasks { margin: 7px 0; padding-left: 20px; font-size: 12px; line-height: 1.8; }
+@media (max-width: 700px) { .account-usage-menu { left: 10px; right: 10px; bottom: 10px; width: auto; max-height: calc(100dvh - 30px); padding: 16px; } }

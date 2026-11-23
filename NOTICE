@@ -1,0 +1,19 @@
+Claude Cloud Open Source Edition
+Copyright (C) 2026 Claude Cloud contributors
+
+Except for separately identified third-party components, this project's own
+source code is licensed under the GNU General Public License, version 3 only
+(SPDX-License-Identifier: GPL-3.0-only). See LICENSE for the complete terms.
+
+This software is distributed without any warranty, including implied warranties
+of merchantability or fitness for a particular purpose, to the extent permitted
+by applicable law.
+
+Third-party components retain their own copyright and license notices. See
+THIRD_PARTY.md and the component-specific notices shipped with this repository.
+
+Claude and Claude Code are third-party products. This repository contains the
+deployment and management software; it does not contain the official Claude
+client binary, model weights, account credentials, or a Claude subscription.
+Official software is obtained separately during deployment and remains subject
+to its own terms. This project is independent and is not officially endorsed.
